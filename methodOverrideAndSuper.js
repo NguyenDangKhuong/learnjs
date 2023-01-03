@@ -1,5 +1,5 @@
 // @ts-nocheck
-// method overriding: ghi đè lại một method
+// 1.method overriding: ghi đè lại một method
 class Mouse {
   say() {
     console.log('my name is Chuột')
@@ -19,6 +19,38 @@ jerry.say(function () {
 })
 // my name is Chuột Jerry
 
-//super: 
+// 2.super:
+// khởi tạo class
+class Cat {
+  constructor(name, color, mouse) {
+    this.name = name
+    this.color = color
+    this.mouse = mouse
+  }
 
+  getMouse(mouse) {
+    this.mouse = mouse
+  }
+}
 
+const tom = new Cat('Tom', 'gray', '')
+tom.getMouse('jerry')
+console.log(tom)
+
+// kế thừa class dùng super
+
+class MachineCat extends Cat {
+  constructor(name, color, mouse, battery) {
+    super(name, color, mouse)
+    this.battery = battery
+  }
+
+  getMouse(mouse, battery) {
+    super.getMouse(mouse)
+    this.battery = battery
+  }
+}
+
+const doraemon = new MachineCat('Doraemon', 'blue', '')
+doraemon.getMouse('nobita', '20%')
+console.log(doraemon)
